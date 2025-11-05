@@ -26,8 +26,4 @@ jobs:
           docker rm ${{ vars.DOCKER_IMAGE }} || true
 
       - name: Start application container
-        run: |
-          docker run -d \
-            --name ${{ vars.DOCKER_IMAGE }} \
-            -p ${{ secrets.HOST_PORT }}:${{ secrets.CONTAINER_PORT }} \
-            ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE }}:latest
+        run: docker run -d --name ${{ vars.DOCKER_IMAGE }} -p ${{ secrets.HOST_PORT }}:${{ secrets.CONTAINER_PORT }} ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE }}:latest
